@@ -52,12 +52,14 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-l = 0;	
+	
 for i = 1:m
 	theta = trainLinearReg(X(1:i,:), y(1:i), lambda);
-	[jtrain,gtrain] = linearRegCostFunction(X(1:i,:), y(1:i), theta, l);
+	[jtrain,gtrain] = linearRegCostFunction(X(1:i,:), y(1:i), theta, 0);% Note: If you are using your cost function (linearRegCostFunction)
+                                                                        %       to compute the training and cross validation error, you should 
+                                                                        %       call the function with the lambda argument set to 0. 
 	error_train(i) = jtrain;
-	[jval,gval] = linearRegCostFunction(Xval, yval, theta, l);
+	[jval,gval] = linearRegCostFunction(Xval, yval, theta, 0);
 	error_val(i) = jval;
 end
 
